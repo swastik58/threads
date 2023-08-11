@@ -9,7 +9,7 @@ async function Page() {
 
     const user = await currentUser();
 
-    if(!user) return null;
+    if(!user) redirect('/sign-in');
 
     const userInfo = await fetchUser(user.id)
 
@@ -17,6 +17,7 @@ async function Page() {
 
     //get activity or notifications
     const activity = await getActivity(userInfo._id)
+    activity.sort((a, b) => b.timestamp - a.timestamp);
 
     return (
       <section>

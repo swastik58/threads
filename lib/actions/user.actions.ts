@@ -97,7 +97,7 @@ export async function fetchUserPosts(userId: string) {
   }
 }
 
-// Almost similar to Thead (search + pagination) and Community (search + pagination)
+// Almost similar to Thead (search + pagination)
 export async function fetchUsers({
   userId,
   searchString = "",
@@ -168,15 +168,17 @@ export async function getActivity(userId: string) {
       return acc.concat(userThread.children);
     }, []);
 
+  
+
     // Find and return the child threads (replies) excluding the ones created by the same user
     const replies = await Thread.find({
       _id: { $in: childThreadIds },
       author: { $ne: userId }, // Exclude threads authored by the same user
-    }).populate({
+    }).sort({createdAt: -1}).populate({
       path: "author",
       model: User,
       select: "name image _id",
-    });
+    })
 
     return replies;
   } catch (error) {
