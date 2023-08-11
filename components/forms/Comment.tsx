@@ -12,15 +12,10 @@ import {
 } from "@/components/ui/form"
 
 import { Input } from "@/components/ui/input"
-
 import { useForm } from 'react-hook-form';
-
 import {zodResolver} from '@hookform/resolvers/zod'
-
-
 import * as z from 'zod'
 import { usePathname, useRouter } from "next/navigation";
-
 //import { updateUser } from "@/lib/actions/user.actions";
 import { CommentValidation } from '@/lib/validations/thread';
 import { addCommentToThread, createThread } from "@/lib/actions/thread.actions";
@@ -45,7 +40,6 @@ const Comment = ({threadId, currentUserImg, currentUserId}: Props) => {
 
     form.reset();
   }
-
   
     const router = useRouter();
     const pathname = usePathname();
@@ -69,18 +63,18 @@ const Comment = ({threadId, currentUserImg, currentUserId}: Props) => {
               render={({ field }) => (
                 <FormItem className='flex w-full items-center gap-3'>
                   <FormLabel>
-                    <Image
-                        src={currentUserImg}
+                    {/* <Image
+                        src={userInfo.image}
                         alt="Profile Image"
                         width={48}
                         height={48}
                         className="rounded-full object-cover"
-                    />
+                    /> */}
                   </FormLabel>
                   <FormControl className="border-none bg-transparent">
                    <Input
                     type="text"
-                    placeholder="Comment..."
+                    placeholder="Have something to say???... Post your thoughts here... "
                     className="no-focus text-light-1 outline-none"
                     {...field}
                     />

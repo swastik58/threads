@@ -75,12 +75,13 @@ function PostThread({userId}: {userId: string}) {
               render={({ field }) => (
                 <FormItem className='flex w-full flex-col gap-3'>
                   <FormLabel className='text-base-semibold text-light-2'>
-                    Content
+                    Place your thoughts here...
                   </FormLabel>
                   <FormControl className="no-focus border border-dark-4 bg-dark-3 text-light-1">
                    <Textarea
                     rows={15}
                     {...field}
+                    placeholder="Lets see what do you have on your mind today..."
                     />
                   </FormControl>
                   <FormMessage />
